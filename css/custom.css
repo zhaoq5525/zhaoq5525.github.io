@@ -1,0 +1,27 @@
+/* 复刻 yojigen.cn 窄居中阅读布局 */
+body {
+  font-family: "Georgia", "Noto Serif CJK SC", serif;
+  color: #222;
+  background: #ffffff;
+  line-height: 1.75;
+}
+.container {
+  max-width: 700px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+/* 导航简化，去除多余线条 */
+header {
+  border-bottom:none;
+}
+/* 段落宽松间距 */
+p {
+  margin:1.2em 0;
+}
+/* 暗色模式柔和配色 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background:#181818;
+    color:#dddddd;
+  }
+}
