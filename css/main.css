@@ -1381,7 +1381,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #9dffb4;
+    background: #3049b4;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2746,4 +2746,47 @@ header.header {
   .pagination {
     margin-bottom: 10px;
   }
+}
+/* 标题保持左对齐 */
+.post-title {
+  text-align: left !important;
+  margin-left: 0 !important;
+}
+/* 外层容器重置：消除整体偏右的偏移 */
+.post-meta-container {
+  display: block !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+/* 元信息本体：强制贴紧左侧，消除左右边距 */
+.post-meta {
+  display: flex !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: auto !important;
+}
+/* 内部每一项保持横向排列即可 */
+.post-meta-item {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+/* 文章正文也左对齐（默认是 justify 两端对齐） */
+.post-body {
+  text-align: left !important;
+/* 段落首行缩进 2 个字符 */
+}
+.post-body p {
+  text-indent: 2em;
+}
+/* 缩小标题/元信息与正文之间的间距（默认 60px 太大） */
+.posts-expand .post-header {
+  margin-bottom: 20px !important;
 }

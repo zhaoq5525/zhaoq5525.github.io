@@ -1,27 +1,44 @@
-/* 复刻 yojigen.cn 窄居中阅读布局 */
-body {
-  font-family: "Georgia", "Noto Serif CJK SC", serif;
-  color: #222;
-  background: #ffffff;
-  line-height: 1.75;
+/* 强制标题 & 元信息严格左对齐（终极版） */
+#content .post-header,
+#content header.post-header {
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
-.container {
-  max-width: 700px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
+
+#content .post-title {
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
-/* 导航简化，去除多余线条 */
-header {
-  border-bottom:none;
+
+#content .post-meta-container,
+#content .posts-expand .post-meta-container {
+  text-align: left !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
-/* 段落宽松间距 */
-p {
-  margin:1.2em 0;
+
+/* 核心：直接干掉 .post-meta 的 center */
+#content .post-meta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: auto !important;
 }
-/* 暗色模式柔和配色 */
-@media (prefers-color-scheme: dark) {
-  body {
-    background:#181818;
-    color:#dddddd;
-  }
+
+#content .post-meta-item {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
+
+/* 强制左对齐兜底 */
+#content .post-header, #content header.post-header { text-align: left !important; margin-left: 0 !important; padding-left: 0 !important; }
+#content .post-title { text-align: left !important; margin-left: 0 !important; padding-left: 0 !important; }
+#content .post-meta { display: flex !important; flex-wrap: wrap !important; justify-content: flex-start !important; align-items: center !important; text-align: left !important; margin-left: 0 !important; padding-left: 0 !important; width: auto !important; }
+#content .post-meta-item { margin-left: 0 !important; padding-left: 0 !important; }

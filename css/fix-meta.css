@@ -1,0 +1,22 @@
+/* 打破最外层 header 的居中 */
+.post-header {
+  text-align: left !important;
+}
+
+/* 外层容器：强制左对齐 */
+.post-meta-container {
+  display: flex !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+/* 元信息本体：覆盖原有的 center */
+.post-meta {
+  display: flex !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left:
