@@ -19,24 +19,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhaoq5525.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12,"widgets":["category","tag","archive"]},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":"twikoo","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhaoq5525">
-<meta property="og:url" content="https://zhaoq5525.github.io/index.html">
+    <meta name="description" content="用于存储IP地址和MAC地址的映射关系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARP - Address Resolution Protocol 地址解析协议">
+<meta property="og:url" content="https://zhaoq5525.github.io/2026/09/16/arp/index.html">
 <meta property="og:site_name" content="zhaoq5525">
-<meta property="og:description" content="个人博客">
+<meta property="og:description" content="用于存储IP地址和MAC地址的映射关系">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoq5525.github.io/2026/09/16/arp/macAdressWithIpAdress.png">
+<meta property="article:published_time" content="2026-09-16T04:07:29.147Z">
+<meta property="article:modified_time" content="2026-09-18T07:21:59.224Z">
 <meta property="article:author" content="zhaoq5525">
+<meta property="article:tag" content="ARP">
+<meta property="article:tag" content="三层网络">
+<meta property="article:tag" content="二层网络">
+<meta property="article:tag" content="网络排错">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoq5525.github.io/2026/09/16/arp/macAdressWithIpAdress.png">
 
 
-<link rel="canonical" href="https://zhaoq5525.github.io/">
+<link rel="canonical" href="https://zhaoq5525.github.io/2026/09/16/arp/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhaoq5525.github.io/2026/09/16/arp/","path":"2026/09/16/arp/","title":"ARP - Address Resolution Protocol 地址解析协议"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>zhaoq5525</title>
+<title>ARP - Address Resolution Protocol 地址解析协议 | zhaoq5525</title>
   
 
 
@@ -86,7 +94,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">zhaoq5525</h1>
+      <p class="site-title">zhaoq5525</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -163,16 +171,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/09/16/arp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -186,13 +195,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | zhaoq5525">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="ARP - Address Resolution Protocol 地址解析协议 | zhaoq5525">
+      <meta itemprop="description" content="用于存储IP地址和MAC地址的映射关系">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/09/16/arp/" class="post-title-link" itemprop="url">ARP - Address Resolution Protocol 地址解析协议</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          ARP - Address Resolution Protocol 地址解析协议
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -228,194 +237,62 @@
   
 </div>
 
+            <div class="post-description">用于存储IP地址和MAC地址的映射关系</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <p>用于存储IP地址和MAC地址的映射关系</p>
-          <!--noindex-->
-          <!--/noindex-->
+    <div class="post-body" itemprop="articleBody"><p>在局域网中，当主机或其它三层网络设备有数据要发送给另一台主机或三层网络设备时，需要知道对方的网络层地址（即IP地址）。</p>
+<blockquote>
+<p>三层网络设备：路由器、三层交换机</p>
+</blockquote>
+<p>但是仅有IP地址是不够的，因为IP报文必须封装成帧才能通过物理网络发送，因此发送方还需要知道接收方的物理地址（即MAC地址），这就需要一个通过IP地址获取物理地址的协议，以完成从IP地址到MAC地址的映射。</p>
+<p><code>ARP</code> 地址解析协议，即可实现将IP地址解析为MAC地址。</p>
+<h2 id="IP-地址的存在性"><a href="#IP-地址的存在性" class="headerlink" title="IP 地址的存在性"></a>IP 地址的存在性</h2><p><img src="/2026/09/16/arp/macAdressWithIpAdress.png" alt="macAdressWithIpAdress"></p>
+<p><strong>我的理解：</strong> mac地址是物理上的标识，IP 虽然也是标识，但是 IP 本身还具有<strong>能够构建组织的属性</strong>，这是一种逻辑的组织架构。</p>
+<p>用mac来进行沟通意味着庞大的调度能力，这就意味着 设备A→设备A3 的中途需要经过一些完全无关的通讯对象，而  IP 的逻辑组织架构就直接从 设备A→设备A2→设备A3 不需要其他无关的单位来进行工作。</p>
+<p>如上图所示，左侧是我理解的使用mac地址方式来进行通讯时发生的场景，由于没有所谓的组织架构所以相当于是各找各的，而右侧是使用 IP 地址方式来进行通讯的场景，不会存在mac地址那种没有组织的处境。</p>
+<h2 id="ARP-逻辑地址与物理地址共同使用的粘合剂"><a href="#ARP-逻辑地址与物理地址共同使用的粘合剂" class="headerlink" title="ARP - 逻辑地址与物理地址共同使用的粘合剂"></a>ARP - 逻辑地址与物理地址共同使用的粘合剂</h2><p>实现将 IP 地址解析为 MAC 地址。</p>
+<p>**我的理解：**IP 地址组织能力固然很好，但是却做不到mac地址的唯一标识功能，ip 能从逻辑上找到对应的对象，mac能让你确认这个对象。</p>
+<p>这样看，ip 地址 和 mac 地址就都是必须的呢，前者提供效率后者提供身份上的确定。</p>
+<p>既是如此，那么就需要有一种途径将 IP 和 mac 共存，arp 的产生也就因此知道了，<strong>arp 让主机的逻辑地址和物理地址都能同时在使用层面共同推进。</strong></p>
+<blockquote>
+<p>ARP（Address Resolution Protocol，地址解析协议）是一种将 IP 地址解析为 MAC 地址的协议；设备通过维护「ARP 表（ARP Cache）」来记录 IP 与 MAC 的映射关系，ARP 的工作结果就体现在这张 ARP 表中。</p>
+</blockquote>
+<h2 id="arp-工具"><a href="#arp-工具" class="headerlink" title="arp 工具"></a>arp 工具</h2><h3 id="windows-arp"><a href="#windows-arp" class="headerlink" title="windows - arp"></a>windows - arp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Astak&gt;arp -a</span><br><span class="line"></span><br><span class="line">接口: 192.168.8.1 --- 0x9</span><br><span class="line">  Internet 地址         物理地址              类型</span><br><span class="line">  192.168.8.254         00-50-56-f4-da-2d     动态</span><br><span class="line">  192.168.8.255         ff-ff-ff-ff-ff-ff     静态</span><br><span class="line">  224.0.0.2             01-00-5e-00-00-02     静态</span><br><span class="line">  224.0.0.22            01-00-5e-00-00-16     静态</span><br><span class="line">  224.0.0.251           01-00-5e-00-00-fb     静态</span><br><span class="line">  224.0.0.252           01-00-5e-00-00-fc     静态</span><br><span class="line">  224.0.5.168           01-00-5e-00-05-a8     静态</span><br><span class="line">  224.0.5.169           01-00-5e-00-05-a9     静态</span><br><span class="line">  239.255.255.250       01-00-5e-7f-ff-fa     静态</span><br><span class="line">  255.255.255.255       ff-ff-ff-ff-ff-ff     静态</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARP/" rel="tag"># ARP</a>
+              <a href="/tags/%E4%BA%8C%E5%B1%82%E7%BD%91%E7%BB%9C/" rel="tag"># 二层网络</a>
+              <a href="/tags/%E4%B8%89%E5%B1%82%E7%BD%91%E7%BB%9C/" rel="tag"># 三层网络</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8E%92%E9%94%99/" rel="tag"># 网络排错</a>
+          </div>
+
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/09/04/%E6%B5%8B%E8%AF%95/" rel="prev" title="Hexo部署">
+                  <i class="fa fa-angle-left"></i> Hexo部署
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/09/04/%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhaoq5525">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhaoq5525">
-      <meta itemprop="description" content="个人博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | zhaoq5525">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/09/04/%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">Hexo部署</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2026-09-04 12:15:16" itemprop="dateCreated datePublished" datetime="2026-09-04T12:15:16+08:00">2026-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-16 13:33:25" itemprop="dateModified" datetime="2026-09-16T13:33:25+08:00">2026-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">技术笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天创建的了一个新的博客</p>
-<p><img src="/image.png" alt="alt text"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2025/09/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhaoq5525">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhaoq5525">
-      <meta itemprop="description" content="个人博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | zhaoq5525">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/20/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-09-20 10:06:58" itemprop="dateCreated datePublished" datetime="2025-09-20T10:06:58+08:00">2025-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-14 22:10:48" itemprop="dateModified" datetime="2026-09-14T22:10:48+08:00">2026-09-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>测试hello</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
