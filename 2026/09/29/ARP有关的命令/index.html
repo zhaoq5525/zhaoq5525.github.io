@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha256-4Lad8m4ZWW1Lgb9+sMVLYEfnIh7BjV1NQMEe79Pviks=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhaoq5525.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12,"widgets":["category","tag","archive"]},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":"twikoo","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Windows 和 Linux 的 arp 表都存储在内核内存里面，&emsp;&emsp;无论是动态arp 还是 静态arp 都是存储在内存中，重启就会消失。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARP有关的命令">
+<meta property="og:url" content="https://zhaoq5525.github.io/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="zhaoq5525">
+<meta property="og:description" content="Windows 和 Linux 的 arp 表都存储在内核内存里面，&emsp;&emsp;无论是动态arp 还是 静态arp 都是存储在内存中，重启就会消失。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-29T05:08:37.157Z">
+<meta property="article:modified_time" content="2026-09-29T13:47:59.096Z">
+<meta property="article:author" content="zhaoq5525">
+<meta property="article:tag" content="ARP">
+<meta property="article:tag" content="三层网络">
+<meta property="article:tag" content="二层网络">
+<meta property="article:tag" content="广播">
+<meta property="article:tag" content="组播">
+<meta property="article:tag" content="网络排错">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhaoq5525.github.io/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhaoq5525.github.io/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/","path":"2026/09/29/ARP有关的命令/","title":"ARP有关的命令"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ARP有关的命令 | zhaoq5525</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","display_overflow":"scroll","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-mml-chtml.js","integrity":"sha256-ihPtDDm7pTmSF9ViEsItlvsrBTsNkz0MOXMchzOwCQw="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-search popup-trigger" aria-label="搜索" role="button">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zhaoq5525</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-toggle" aria-label="切换导航栏" role="button">
+      <i class="fa fa-ellipsis fa-fw fa-lg"></i>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaoq5525</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaoq5525">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaoq5525">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ARP有关的命令 | zhaoq5525">
+      <meta itemprop="description" content="Windows 和 Linux 的 arp 表都存储在内核内存里面，&lt;br&gt;&emsp;&emsp;无论是动态arp 还是 静态arp 都是存储在内存中，重启就会消失。
+">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ARP有关的命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-09-29 13:08:37 / 修改时间：21:47:59" itemprop="dateCreated datePublished" datetime="2026-09-29T13:08:37+08:00">2026-09-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/command/" itemprop="url" rel="index"><span itemprop="name">command</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/command/ip/" itemprop="url" rel="index"><span itemprop="name">ip</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/command/ip/arp/" itemprop="url" rel="index"><span itemprop="name">arp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Windows 和 Linux 的 arp 表都存储在内核内存里面，<br>&emsp;&emsp;无论是动态arp 还是 静态arp 都是存储在内存中，重启就会消失。
+</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Windows 和 Linux 的 arp 表都存储在内核内存里面。</p>
+<p>Linux 中的 arp 属于 Linux 内核「邻居子系统」的数据结构，放在内核 RAM，没有固定的文本文件保存整张arp表。</p>
+<blockquote>
+<p>可以看内核的虚拟文件接口（只是内核内存的映射，不是硬盘文件）</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/net/arp</span><br></pre></td></tr></table></figure>
+
+<p>Windows 也没有持久保存 ARP 动态条目的地方。</p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h3 id="arp"><a href="#arp" class="headerlink" title="arp"></a>arp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Astak&gt;arp -a</span><br><span class="line"></span><br><span class="line">接口: 192.168.8.1 --- 0x9</span><br><span class="line">  Internet 地址         物理地址              类型</span><br><span class="line">  192.168.8.254         00-50-56-ea-59-71     动态</span><br><span class="line">  192.168.8.255         ff-ff-ff-ff-ff-ff     静态</span><br><span class="line">  224.0.0.2             01-00-5e-00-00-02     静态</span><br><span class="line">  224.0.0.22            01-00-5e-00-00-16     静态</span><br><span class="line">  224.0.0.251           01-00-5e-00-00-fb     静态</span><br><span class="line">  224.0.0.252           01-00-5e-00-00-fc     静态</span><br><span class="line">  224.0.1.60            01-00-5e-00-01-3c     静态</span><br><span class="line">  239.192.152.143       01-00-5e-40-98-8f     静态</span><br><span class="line">  239.255.255.250       01-00-5e-7f-ff-fa     静态</span><br><span class="line">  239.255.255.253       01-00-5e-7f-ff-fd     静态</span><br><span class="line">  255.255.255.255       ff-ff-ff-ff-ff-ff     静态</span><br></pre></td></tr></table></figure>
+
+<p>接口: 192.168.8.1 — 0x9</p>
+<table>
+<thead>
+<tr>
+<th align="center">Internet 地址</th>
+<th align="center">物理地址</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">192.168.8.254</td>
+<td align="center">00-50-56-f5-34-d9</td>
+<td align="center">动态</td>
+<td align="center"><strong>网关</strong>。动态 ARP 条目：你之前 ARP 广播拿到网关 MAC。访问外网 &#x2F; 跨网段时，二层帧目的 MAC 填这个。</td>
+</tr>
+<tr>
+<td align="center">192.168.8.255</td>
+<td align="center">ff-ff-ff-ff-ff-ff</td>
+<td align="center">静态</td>
+<td align="center">本网段广播地址，MAC 全 F，二层广播</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><strong>动态 (dynamic)</strong>：ARP 广播询问得到，有老化时间，超时会删除，需要重新 ARP 请求。</p>
+<p><strong>静态 (static)</strong>：系统预先内置，不是 ARP 报文学习的，不会老化。这里的组播、广播条目全部属于系统内置静态，<strong>不是 ARP 协议学习的主机条目</strong>。</p>
+<p>Windows 网络栈初始化网卡的时候，<strong>自动把这些固定的 IP→组播 &#x2F; 广播 MAC 映射预先写到 ARP 缓存表</strong>。这些映射是协议标准写死的，是固定数学换算关系；内核直接内置，不是 ARP 报文学习得到，所以 Windows 归类标记为<code>静态</code>。</p>
+<p><strong>广播地址</strong> <code>192.168.8.255</code>、<code>255.255.255.255</code>，二层目的 MAC 固定就是<code>ff-ff-ff-ff-ff-ff</code>，协议规定死，不需要 ARP 解析。</p>
+<p><strong>IPv4 组播地址（224.0.0.0~239.255.255.255）</strong> IPv4 组播 IP 按照标准算法，直接算出对应的二层组播 MAC（<code>01-00-5e</code>开头）。</p>
+<blockquote>
+<p>公式：组播 MAC 前缀固定<code>01:00:5e</code>，后面 24bit 取组播 IP 低 23 位。 内核不需要发 ARP 包去询问，直接计算就能得到 MAC。 所以 Windows 直接预置这一条，类型标记静态。</p>
+</blockquote>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="ip-neigh"><a href="#ip-neigh" class="headerlink" title="ip neigh"></a>ip neigh</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ip neigh</span><br><span class="line">192.168.8.2 dev ens160 lladdr 00:50:56:f9:91:32 STALE</span><br><span class="line">192.168.8.1 dev ens160 lladdr 00:50:56:c0:00:08 REACHABLE</span><br></pre></td></tr></table></figure>
+
+<p><code>lladdr</code> &#x3D; link-layer address，就是 MAC 地址</p>
+<p>REACHABLE：可达的，最近一段时间内，内核收到过来自这个 IP 的确认，这个 IP-MAC 映射是<strong>有效、可信</strong>，发包的时候可以直接使用这个 MAC，<strong>不需要重新发 ARP 请求</strong></p>
+<p>STALE：陈旧的，IP-MAC 映射条目还保存在表里，<strong>但是已经超时，不再确认对方是否在线</strong>，条目还没删除，只是可信度下降，当你<strong>再次要发包给 192.168.8.2</strong>时： 内核不会直接用这个 MAC，会先发送 ARP 探测（邻居请求），验证 MAC 是否还正确，收到应答 → 变回<code>REACHABLE</code>，无应答 → 标记<code>INCOMPLETE</code>，多次失败后删除该条目。</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>REACHABLE</code></td>
+<td>可达，近期验证有效</td>
+</tr>
+<tr>
+<td><code>STALE</code></td>
+<td>陈旧，信息可能失效，下次发包前校验</td>
+</tr>
+<tr>
+<td><code>INCOMPLETE</code></td>
+<td>ARP 请求已发出，<strong>还没收到应答</strong></td>
+</tr>
+<tr>
+<td><code>PROBE</code></td>
+<td>正在主动发探测包验证</td>
+</tr>
+<tr>
+<td><code>FAILED</code></td>
+<td>探测失败，无法解析 MAC</td>
+</tr>
+<tr>
+<td><code>PERMANENT</code></td>
+<td>永久静态 ARP，永不老化</td>
+</tr>
+</tbody></table>
+<h4 id="手动创建一条-arp-条目"><a href="#手动创建一条-arp-条目" class="headerlink" title="手动创建一条 arp  条目"></a>手动创建一条 arp  条目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip neigh add &lt;对端IP&gt; lladdr &lt;MAC地址&gt; dev &lt;网卡名&gt; [nud 参数]</span><br></pre></td></tr></table></figure>
+<p>创建一条 arp 条目，ip 地址 192.168.8.254，mac 地址 00:50:56-ea-59-71，这条 IP‑MAC 映射，归属到 ens160 网卡的邻居表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip neigh add 192.168.8.254 lladdr 00:50:56-ea-59-71 dev ens160 nud permanent</span><br></pre></td></tr></table></figure>
+
+<h3 id="邻居表-neighbour-table"><a href="#邻居表-neighbour-table" class="headerlink" title="邻居表-neighbour table"></a>邻居表-neighbour table</h3><p>主机的以外的都属于是邻居，记录邻居信息的表自然就叫做邻居表，arp表就是一种类型的邻居表，准确的说是邻居表的一个部分。</p>
+<p>ARP 表是邻居表的子集；邻居表是更大的统称，包含 ARP（IPv4）和 NDP（IPv6）两类邻居记录。</p>
+<p>IPv4 邻居：靠 ARP 喊话拿到信息 → 这部分内容，就是我们常说的<strong>ARP 表</strong>，IPv6 邻居：不靠 ARP，靠 NDP（邻居发现协议）拿到信息 → 这部分<strong>不能叫 ARP 表</strong></p>
+<p>Linux 内核设计这本通讯录的时候，是<strong>一本通用本子</strong>，IPv4、IPv6 的邻居记录都写在同一个表结构里。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Windows 只是把 REACHABLE、STALE 合并统称为「动态」，不展示中间状态。</p>
+<p>Linux不仅区分条目会不会老化，<strong>动态条目还额外记录这条 IP-MAC 映射是否经过最近验证（REACHABLE&#x2F;STALE）</strong>。</p>
+<p>Windows 和 Linux 的 arp 表都存储在内核内存里面，由于这个缘故，所以如果事前不编写对应的程序那么重启后相关的信息就会消失。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARP/" rel="tag"># ARP</a>
+              <a href="/tags/%E4%BA%8C%E5%B1%82%E7%BD%91%E7%BB%9C/" rel="tag"># 二层网络</a>
+              <a href="/tags/%E4%B8%89%E5%B1%82%E7%BD%91%E7%BB%9C/" rel="tag"># 三层网络</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8E%92%E9%94%99/" rel="tag"># 网络排错</a>
+              <a href="/tags/%E5%B9%BF%E6%92%AD/" rel="tag"># 广播</a>
+              <a href="/tags/%E7%BB%84%E6%92%AD/" rel="tag"># 组播</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/09/16/arp/" rel="prev" title="ARP - Address Resolution Protocol 地址解析协议">
+                  <i class="fa fa-angle-left"></i> ARP - Address Resolution Protocol 地址解析协议
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zhaoq5525</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

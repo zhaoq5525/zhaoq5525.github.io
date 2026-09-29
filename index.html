@@ -142,12 +142,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -173,7 +173,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/09/18/%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80/">
+    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/09/18/%E4%B8%BB%E6%9C%BA%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80/" class="post-title-link" itemprop="url">arp流程</a>
+          <a href="/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">ARP有关的命令</a>
         </h2>
 
         <div class="post-meta-container">
@@ -201,15 +201,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2026-09-18 21:05:27" itemprop="dateCreated datePublished" datetime="2026-09-18T21:05:27+08:00">2026-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-28 13:47:41" itemprop="dateModified" datetime="2026-09-28T13:47:41+08:00">2026-09-28</time>
+      <time title="创建时间：2026-09-29 13:08:37 / 修改时间：21:47:59" itemprop="dateCreated datePublished" datetime="2026-09-29T13:08:37+08:00">2026-09-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -218,6 +212,18 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/command/" itemprop="url" rel="index"><span itemprop="name">command</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/command/ip/" itemprop="url" rel="index"><span itemprop="name">ip</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/command/ip/arp/" itemprop="url" rel="index"><span itemprop="name">arp</span></a>
         </span>
     </span>
 
@@ -231,7 +237,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>ARP 广播限局域网；跨网只 ARP 网关；代理 ARP 是路由器代答，不是广播跑过路由器。</p>
+          <p>Windows 和 Linux 的 arp 表都存储在内核内存里面，<br>&emsp;&emsp;无论是动态arp 还是 静态arp 都是存储在内存中，重启就会消失。
+</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -296,7 +303,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-28 14:00:39" itemprop="dateModified" datetime="2026-09-28T14:00:39+08:00">2026-09-28</time>
+      <time title="修改时间：2026-09-29 13:08:05" itemprop="dateModified" datetime="2026-09-29T13:08:05+08:00">2026-09-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -322,7 +329,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>ARP（Address Resolution Protocol，地址解析协议）是一种将 IP 地址解析为 MAC 地址的协议；设备通过维护「ARP 表（ARP Cache）」来记录 IP 与 MAC 的映射关系，ARP 的工作结果就体现在这张 ARP 表中。 ARP 广播限局域网；跨网只 ARP 网关；代理 ARP 是路由器代答，不是广播跑过路由器。</p>
+          <p>ARP（Address Resolution Protocol，地址解析协议）是一种将 IP 地址解析为 MAC 地址的协议；设备通过维护「ARP 表（ARP Cache）」来记录 IP 与 MAC 的映射关系，ARP 的工作结果就体现在这张 ARP 表中。<br>&emsp;&emsp;ARP 广播限局域网；跨网只 ARP 网关；代理 ARP 是路由器代答，不是广播跑过路由器。
+</p>
           <!--noindex-->
           <!--/noindex-->
         
