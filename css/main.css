@@ -1381,7 +1381,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #fff6ff;
+    background: #87ffff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2482,6 +2482,73 @@ ul.breadcrumb li:last-child {
   .tag-cloud-10 {
     border-bottom-color: #eee;
     color: #eee;
+  }
+}
+.tag-cloud-alpha {
+  text-align: left;
+}
+.tag-cloud-alpha .tag-cloud-tags {
+  column-count: 3;
+  column-gap: 30px;
+}
+@media (max-width: 900px) {
+  .tag-cloud-alpha .tag-cloud-tags {
+    column-count: 2;
+  }
+}
+@media (max-width: 600px) {
+  .tag-cloud-alpha .tag-cloud-tags {
+    column-count: 1;
+  }
+}
+.tag-cloud-alpha .tag-letter-group {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 20px;
+}
+.tag-cloud-alpha .tag-letter {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 0 2px;
+  padding-bottom: 0;
+}
+.tag-cloud-alpha .tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tag-cloud-alpha .tag-list a {
+  display: inline-flex;
+  align-items: baseline;
+  margin: 3px 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.tag-cloud-alpha .tag-list a:hover {
+  color: #3273dc;
+  border-bottom: none;
+}
+.tag-cloud-alpha .tag-list .tag-name {
+  margin-right: 4px;
+}
+.tag-cloud-alpha .tag-list .tag-count {
+  font-size: 0.75em;
+  opacity: 0.6;
+}
+@media (prefers-color-scheme: dark) {
+  .tag-cloud-alpha .tag-list a {
+    background: none;
+    color: #ccc;
+  }
+  .tag-cloud-alpha .tag-list a:hover {
+    color: #3273dc;
+    border-bottom: none;
   }
 }
 mark.search-keyword {
