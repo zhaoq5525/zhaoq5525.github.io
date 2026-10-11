@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha256-4Lad8m4ZWW1Lgb9+sMVLYEfnIh7BjV1NQMEe79Pviks=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhaoq5525.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12,"widgets":["category","tag","archive"]},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":"twikoo","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="人始终是提出「我想让机器做什么」的源头，只是翻译这道工序不断地从人身上剥离，下沉到工具里。每一次剥离，人都离纯粹地表达意图更近一步。从二进制到代码，从代码到自然语言，每一层抽象都是前人把自己的脑力封装成给后人调用的工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概念到物理表现：抽象，是前人封装好的脑力">
+<meta property="og:url" content="https://zhaoq5525.github.io/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/index.html">
+<meta property="og:site_name" content="zhaoq5525">
+<meta property="og:description" content="人始终是提出「我想让机器做什么」的源头，只是翻译这道工序不断地从人身上剥离，下沉到工具里。每一次剥离，人都离纯粹地表达意图更近一步。从二进制到代码，从代码到自然语言，每一层抽象都是前人把自己的脑力封装成给后人调用的工具。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhaoq5525.github.io/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0.png">
+<meta property="article:published_time" content="2026-10-11T12:45:52.623Z">
+<meta property="article:modified_time" content="2026-10-11T13:55:14.466Z">
+<meta property="article:author" content="zhaoq5525">
+<meta property="article:tag" content="抽象">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="计算机史">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaoq5525.github.io/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0.png">
+
+
+<link rel="canonical" href="https://zhaoq5525.github.io/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhaoq5525.github.io/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/","path":"2026/10/11/概念到物理表现/","title":"概念到物理表现：抽象，是前人封装好的脑力"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>概念到物理表现：抽象，是前人封装好的脑力 | zhaoq5525</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","display_overflow":"scroll","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-mml-chtml.js","integrity":"sha256-ihPtDDm7pTmSF9ViEsItlvsrBTsNkz0MOXMchzOwCQw="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-search popup-trigger" aria-label="搜索" role="button">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zhaoq5525</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-toggle" aria-label="切换导航栏" role="button">
+      <i class="fa fa-ellipsis fa-fw fa-lg"></i>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaoq5525</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaoq5525">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaoq5525">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="概念到物理表现：抽象，是前人封装好的脑力 | zhaoq5525">
+      <meta itemprop="description" content="人始终是提出「我想让机器做什么」的源头，只是翻译这道工序不断地从人身上剥离，下沉到工具里。每一次剥离，人都离纯粹地表达意图更近一步。从二进制到代码，从代码到自然语言，每一层抽象都是前人把自己的脑力封装成给后人调用的工具。
+">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          概念到物理表现：抽象，是前人封装好的脑力
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-11 20:45:52 / 修改时间：21:55:14" itemprop="dateCreated datePublished" datetime="2026-10-11T20:45:52+08:00">2026-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%9D%E8%80%83/" itemprop="url" rel="index"><span itemprop="name">思考</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">人始终是提出「我想让机器做什么」的源头，只是翻译这道工序不断地从人身上剥离，下沉到工具里。每一次剥离，人都离纯粹地表达意图更近一步。从二进制到代码，从代码到自然语言，每一层抽象都是前人把自己的脑力封装成给后人调用的工具。
+</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>人始终是提出 “我想让机器做什么事情”的源头，只是翻译这道工序不断地从人身上剥离，下沉到工具里。</p>
+<p>每一次剥离，人都是离纯粹的表达意图更近一步。</p>
+<p><img src="/2026/10/11/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0/%E6%A6%82%E5%BF%B5%E5%88%B0%E7%89%A9%E7%90%86%E8%A1%A8%E7%8E%B0.png" alt="概念到物理表现"></p>
+<p>和一层又一层的抽象打交道，而每一层抽象都是前人把自己的脑力封装成给后人调用的工具。</p>
+<blockquote>
+<p>概念 → 物理表现</p>
+</blockquote>
+<p>人有一个想法，然后亲手把它变成现实。想造一把椅子，就动手砍树、削木、拼接；想让机器算个数，就亲手拨动齿轮、连接电路。想法到结果之间，只有一双手的距离。</p>
+<p>但当问题变复杂，这双手就不够用了。于是人们开始把「怎么做」沉淀下来：</p>
+<blockquote>
+<p>概念 → 实现方式 → 物理表现</p>
+</blockquote>
+<p>实现方式不是实现本身，而是实现的<strong>手段</strong>。它是图纸、是流程、是算法、是指令集。</p>
+<p>这样同一个概念可以被重复、被规模化、被交给不理解概念的人或机器去执行。造椅子的人不必重新发明榫卯，写程序的人不必重新设计加法器——实现方式把「如何做」从「为什么做」里剥离了出来。</p>
+<p>再后来，连实现方式本身也变得太庞杂，人开始把它也记录下来：</p>
+<blockquote>
+<p>概念 → 文字记录 → 实现方式 → 物理表现</p>
+</blockquote>
+<p>文字记录让实现方式脱离了口耳相传，脱离了手把手教。它成为一种可以被储存、传递、修订、组合的对象。</p>
+<p><strong>中间的实现方式不是实现本身，而是实现的手段。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+              <a href="/tags/%E6%8A%BD%E8%B1%A1/" rel="tag"># 抽象</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%B2/" rel="tag"># 计算机史</a>
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/09/29/ARP%E6%9C%89%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4/" rel="prev" title="ARP有关的命令">
+                  <i class="fa fa-angle-left"></i> ARP有关的命令
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zhaoq5525</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
