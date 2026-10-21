@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha256-4Lad8m4ZWW1Lgb9+sMVLYEfnIh7BjV1NQMEe79Pviks=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhaoq5525.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12,"widgets":["category","tag","archive"]},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":"twikoo","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="从颜色等肉眼可见的属性出发，追问物理量为何能被称为物体的属性。以压强为核心案例，探讨力与压强的本质区别，提出&quot;来源是外部的，状态是自身的&quot;这一区分，论证压强作为物体内部受力状态为何能成为属性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="来源是外部的，状态是自身的：什么是物体的属性">
+<meta property="og:url" content="https://zhaoq5525.github.io/2026/10/18/%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E4%BD%93%E7%9A%84%E5%B1%9E%E6%80%A7/index.html">
+<meta property="og:site_name" content="zhaoq5525">
+<meta property="og:description" content="从颜色等肉眼可见的属性出发，追问物理量为何能被称为物体的属性。以压强为核心案例，探讨力与压强的本质区别，提出&quot;来源是外部的，状态是自身的&quot;这一区分，论证压强作为物体内部受力状态为何能成为属性。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-18T09:28:49.517Z">
+<meta property="article:modified_time" content="2026-10-18T13:03:03.730Z">
+<meta property="article:author" content="zhaoq5525">
+<meta property="article:tag" content="力学">
+<meta property="article:tag" content="压强">
+<meta property="article:tag" content="属性">
+<meta property="article:tag" content="概念辨析">
+<meta property="article:tag" content="物理量">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhaoq5525.github.io/2026/10/18/%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E4%BD%93%E7%9A%84%E5%B1%9E%E6%80%A7/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhaoq5525.github.io/2026/10/18/%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E4%BD%93%E7%9A%84%E5%B1%9E%E6%80%A7/","path":"2026/10/18/什么是物体的属性/","title":"来源是外部的，状态是自身的：什么是物体的属性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>来源是外部的，状态是自身的：什么是物体的属性 | zhaoq5525</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","display_overflow":"scroll","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-mml-chtml.js","integrity":"sha256-ihPtDDm7pTmSF9ViEsItlvsrBTsNkz0MOXMchzOwCQw="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-search popup-trigger" aria-label="搜索" role="button">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zhaoq5525</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-toggle" aria-label="切换导航栏" role="button">
+      <i class="fa fa-ellipsis fa-fw fa-lg"></i>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaoq5525</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/10/18/%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E4%BD%93%E7%9A%84%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaoq5525">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaoq5525">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="来源是外部的，状态是自身的：什么是物体的属性 | zhaoq5525">
+      <meta itemprop="description" content="从颜色等肉眼可见的属性出发，追问物理量为何能被称为物体的属性。以压强为核心案例，探讨力与压强的本质区别，提出&quot;来源是外部的，状态是自身的&quot;这一区分，论证压强作为物体内部受力状态为何能成为属性。
+">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          来源是外部的，状态是自身的：什么是物体的属性
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-18 17:28:49 / 修改时间：21:03:03" itemprop="dateCreated datePublished" datetime="2026-10-18T17:28:49+08:00">2026-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%9D%E8%80%83/" itemprop="url" rel="index"><span itemprop="name">思考</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%9D%E8%80%83/%E7%89%A9%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">物理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">从颜色等肉眼可见的属性出发，追问物理量为何能被称为物体的属性。以压强为核心案例，探讨力与压强的本质区别，提出"来源是外部的，状态是自身的"这一区分，论证压强作为物体内部受力状态为何能成为属性。
+</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>通常情况下，我理解的属性是物理自身的客观能被肉眼观察到的，比方说颜色。</p>
+<p>在了解物理量这个概念的时候，我才突然发现，属性既包含可以被观察到的，也包含一些看不见但是能被找到的东西。</p>
+<blockquote>
+<p>物理量本质上就是物质及其运动的属性。</p>
+<p>更准确地说，它是“可以定量测量的物理属性”。</p>
+</blockquote>
+<p>我由思考压强是什么引出这个主题。</p>
+<blockquote>
+<p>压强 pressure 是物理相互挤压而垂直作用在物体表面的一种弹性力，其作用效果用压力除以受力面积来表示，其作用效果用压力除以受力面积表示，同称为P，中国大陆又称为压强 P&#x3D;F&#x2F;S</p>
+</blockquote>
+<p>对我而言，力本身就比较抽象（这大概率是因为我觉得看不见的物理都抽象）但是也能理解，但是在理解压强的时候就不行了。</p>
+<p>当然我也算知道是在描述什么，一个力作用在某个物体上，这个力作用的主体不是物体整体，而是这个被受力物理的一个部分，所以从除法的理解角度来看，F&#x2F;S就是力平均的散开这个S面积上，所表示的结果就是一个在一个极小极小非常小的地方会收到的力。</p>
+<p>但是压强是物体本身的属性我就不能理解了，从上面的理解上看，我所求出的结果应该就是一个平均后的力，跟物体属性又扯得上什么关系呢？</p>
+<p>能说某个力是一个属性嘛？显然不能。</p>
+<p><strong>由属性的角度看：来源是外部的，状态是自身的。</strong></p>
+<p>那么从这个想法来看，这里的 P 就不是代表一个具体的力了，指向的是物体某个极小区域会收到的力这个概念。</p>
+<p>压强这个概念是随物体本身出现而出现的，就像是一个人必然会有性格。F&#x2F;S是用具体的手段将这个属性给<strong>具体化</strong>了。</p>
+<p>我不经要想，<strong>一个概念要称为属性应该满足什么特征？</strong> </p>
+<p>这个概念应该归属于一个主体，它不能独立存在，比方说 A 物体收到了来自 F 的力，这个 F 就不能算做是属性，F 施加在A物体的S区域中，而这个S属于是A物体的面积，而面积属于是物体的属性。从具体方面来说，F&#x2F;S 算的是A物体的在某个区域所承受的力，而从更宽泛的角度看这个平均受力算是物体A的一个概念，这是因为物体A一旦存在就会无时无刻受力，所以这个概念自然就是A物体的属性了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%A9%E7%90%86%E9%87%8F/" rel="tag"># 物理量</a>
+              <a href="/tags/%E5%B1%9E%E6%80%A7/" rel="tag"># 属性</a>
+              <a href="/tags/%E5%8E%8B%E5%BC%BA/" rel="tag"># 压强</a>
+              <a href="/tags/%E5%8A%9B%E5%AD%A6/" rel="tag"># 力学</a>
+              <a href="/tags/%E6%A6%82%E5%BF%B5%E8%BE%A8%E6%9E%90/" rel="tag"># 概念辨析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/10/11/%E6%83%B3%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0/" rel="prev" title="概念到物理表现：文字是桥吗？">
+                  <i class="fa fa-angle-left"></i> 概念到物理表现：文字是桥吗？
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/10/20/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F/" rel="next" title="抽象之下的关系模式">
+                  抽象之下的关系模式 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zhaoq5525</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
