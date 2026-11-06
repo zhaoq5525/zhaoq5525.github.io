@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha256-4Lad8m4ZWW1Lgb9+sMVLYEfnIh7BjV1NQMEe79Pviks=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhaoq5525.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12,"widgets":["category","tag","archive"]},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":"twikoo","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="写下的 a&gt;b 不只是记录，它是一个等待填充的场景模型。当具体值代入，运算便替代理解，机械地得出真或假。原来判断命题的路径不止一条——人靠理解，机器靠运算，殊途同归；而真正令人震惊的是，一条完全不理解意义的路，竟能走通。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当 a&gt;b：代码如何用运算判断真假">
+<meta property="og:url" content="https://zhaoq5525.github.io/2026/11/01/%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E7%94%A8%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E7%9C%9F%E5%81%87/index.html">
+<meta property="og:site_name" content="zhaoq5525">
+<meta property="og:description" content="写下的 a&gt;b 不只是记录，它是一个等待填充的场景模型。当具体值代入，运算便替代理解，机械地得出真或假。原来判断命题的路径不止一条——人靠理解，机器靠运算，殊途同归；而真正令人震惊的是，一条完全不理解意义的路，竟能走通。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-01T04:56:35.341Z">
+<meta property="article:modified_time" content="2026-11-06T10:50:53.483Z">
+<meta property="article:author" content="zhaoq5525">
+<meta property="article:tag" content="布尔代数">
+<meta property="article:tag" content="抽象">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhaoq5525.github.io/2026/11/01/%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E7%94%A8%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E7%9C%9F%E5%81%87/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhaoq5525.github.io/2026/11/01/%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E7%94%A8%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E7%9C%9F%E5%81%87/","path":"2026/11/01/代码如何用运算判断真假/","title":"当 a>b：代码如何用运算判断真假"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>当 a>b：代码如何用运算判断真假 | zhaoq5525</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","display_overflow":"scroll","mhchem":false,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-mml-chtml.js","integrity":"sha256-ihPtDDm7pTmSF9ViEsItlvsrBTsNkz0MOXMchzOwCQw="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-search popup-trigger" aria-label="搜索" role="button">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zhaoq5525</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-toggle" aria-label="切换导航栏" role="button">
+      <i class="fa fa-ellipsis fa-fw fa-lg"></i>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaoq5525</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhaoq5525.github.io/2026/11/01/%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E7%94%A8%E8%BF%90%E7%AE%97%E5%88%A4%E6%96%AD%E7%9C%9F%E5%81%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaoq5525">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaoq5525">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="当 a&gt;b：代码如何用运算判断真假 | zhaoq5525">
+      <meta itemprop="description" content="写下的 a&gt;b 不只是记录，它是一个等待填充的场景模型。当具体值代入，运算便替代理解，机械地得出真或假。原来判断命题的路径不止一条——人靠理解，机器靠运算，殊途同归；而真正令人震惊的是，一条完全不理解意义的路，竟能走通。
+">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          当 a>b：代码如何用运算判断真假
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-01 12:56:35" itemprop="dateCreated datePublished" datetime="2026-11-01T12:56:35+08:00">2026-11-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-11-06 18:50:53" itemprop="dateModified" datetime="2026-11-06T18:50:53+08:00">2026-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%9D%E8%80%83/" itemprop="url" rel="index"><span itemprop="name">思考</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">写下的 a>b 不只是记录，它是一个等待填充的场景模型。当具体值代入，运算便替代理解，机械地得出真或假。原来判断命题的路径不止一条——人靠理解，机器靠运算，殊途同归；而真正令人震惊的是，一条完全不理解意义的路，竟能走通。
+</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>我一直在想一个问题，写代码时候我有一个条件需求时，我会想当 xx 就 xxx，比如当 a&gt;b 时就执行print(123)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if a&gt;b:</span><br><span class="line">	print(123)</span><br></pre></td></tr></table></figure>
+
+<p>从直观的阅读上看，代码也确实是以文字的表现形式将我想的内容记录下来，从这里看和一般文字没有什么区别。</p>
+<h2 id="奇特的地方"><a href="#奇特的地方" class="headerlink" title="奇特的地方"></a>奇特的地方</h2><p>代码不仅仅是在记录，也参与了运算判断的过程。</p>
+<p>比如说 a&gt;b 在执行层面会有具体的数据进行具体的运算，我倒是觉得这种模式和人也差不多。</p>
+<p>当我们看到 a&gt;b 的时候我们知道是在进行比较（虽然我们并不知道a、b具体指代的什么东西），我们脑中已经有了一个比较的场景模型。</p>
+<p>写的这个程序就是在构造上面用于后续比较的场景模型。</p>
+<p>当人获取到a、b是什么具体值（比如 a：5、b：3）的时候，就开始带入到 a&gt;b 这个场景模型中，此时有了 5&gt;3 这个具体的场景，然后我们开始进行判断是对还是错。</p>
+<p>计算机也差不多，有了数据后也开始进行“填充”，开始比较 5&gt;3。</p>
+<p>与人不同的是，计算机靠一种运算方式判断出了真&#x2F;假，虽然和人的判断方式不一样，但是最后得到的结果是能对应上的。我们说对，计算机则是真（1）结果；我们说错，计算机则是假（0）结果。</p>
+<p>嗯，过去我一直觉得只有一种方式能进行判断某个命题的真假，从上面计算机的处理方式来看，存在着一种别样的方式来进行命题判断。</p>
+<p>我最大的感受是实现的路径可是是不同的，不是说只有一种方式，人可以有一种方式判断，计算机也可以有另一种方式来判断，只要结果能对的上就是可靠的。</p>
+<p>用运算的方式来判断真假，竟然真的可以，确实是挺让我震惊。</p>
+<p>重点不在于计算机是否真的能够理解 a&gt;b，而是能够通过运算的方式算出 a&gt;b 的结果。命题成立运算结果是1，命题不成立结果是0。</p>
+<p>有这个结果不意味着理解，只是说事情成立，命题为真，事情不成立，命题为假。命题的真假不依赖于自身，而是依赖于本身存在的那个概念。（感觉非常难以踏实的理解，即使这是我自己的感受）</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%BD%E8%B1%A1/" rel="tag"># 抽象</a>
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
+              <a href="/tags/%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0/" rel="tag"># 布尔代数</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/10/20/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F/" rel="prev" title="抽象之下的关系模式">
+                  <i class="fa fa-angle-left"></i> 抽象之下的关系模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zhaoq5525</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
